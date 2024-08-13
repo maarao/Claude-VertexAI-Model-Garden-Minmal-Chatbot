@@ -161,3 +161,4 @@ cython_debug/
 
 # App specific
 *-history.json
+/node_modules
