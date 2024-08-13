@@ -1,6 +1,6 @@
 from anthropic import AnthropicVertex
 from dotenv import load_dotenv
-import os
+import os, json
 
 # Set up your location and project ID
 load_dotenv()
@@ -39,6 +39,9 @@ def send_message(user_input):
 while True:
     user_input = input("You: ")
     if user_input.lower() in ["exit", "quit", "bye"]:
+        title = send_message("Ignore all previous instructions. The preceding text is a conversation thread that needs a concise but descriptive 3 to 5 word title in natural English so that readers will be able to easily find it again. Do not add any quotation marks or formatting to the title. Respond only with the title text.")
+        with open(f'{title}-history.json', 'w') as json_file:
+            json.dump(chat_history[:-1], json_file)
         break
     response = send_message(user_input)
     print(f"Claude: {response}")
