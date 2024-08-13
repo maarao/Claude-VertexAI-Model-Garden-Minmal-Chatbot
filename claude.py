@@ -35,8 +35,18 @@ def send_message(user_input):
     return assistant_response
 
 def conversation_runner():
+    print("Enter your message (type 'END' on a new line to send):")
+    
     while True:
-        user_input = input("You: ")
+        print("You: ", end="")
+        lines = []
+        while True:
+            line = input()
+            if line.strip().upper() == "END":
+                break
+            lines.append(line)
+        
+        user_input = "\n".join(lines)
         
         # End convo
         if user_input.lower() in ["exit", "quit", "bye"]:
