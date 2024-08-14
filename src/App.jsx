@@ -35,7 +35,7 @@ function App() {
     <div className="size-full">
       <div className="chat-container">
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.user ? 'user' : 'bot'}`} style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>
+          <div key={index} className={`message ${message.user ? 'user' : 'bot'} bg-gray-800`} style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>
             {message.user ? "You: " + message.text : "Claude: " + message.text}
           </div>
         ))}
